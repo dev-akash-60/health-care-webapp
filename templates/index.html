@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disease Prediction Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <video autoplay loop muted plays-inline class="bgclip">
+      <source src="static\bg.mp4" type="video/mp4">
+    </video>
+  
+  <div class="container">
+
+    <div class="card left">
+      <h2>🩺 Disease Prediction — Analyzer</h2>
+      <p>Choose symptoms and click <b>Analyze</b>. Watch the 3D animation while we process your data.</p>
+
+      <form id="predict-form">
+        <div id="inputs"></div>
+        <button type="submit">Analyze</button>
+      </form>
+
+      <p class="note">AJAX + Three.js animation — no page reloads ✨</p>
+    </div>
+
+    <div class="card right">
+      <h2>Prediction</h2>
+      <p id="result-text">Model result will appear here after analysis finishes.</p>
+      <p id="status">Status: Idle</p>
+      <canvas id="bgCanvas"></canvas>
+    </div>
+  </div>
+
+  <!-- 3D loader overlay -->
+  <div id="loader-overlay" class="hidden">
+    <div id="loader"></div>
+    <p>Analyzing symptoms...</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
